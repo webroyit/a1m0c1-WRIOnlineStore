@@ -1,4 +1,5 @@
 import React from 'react';
+import SearchRoundedIcon from '@material-ui/icons/SearchRounded';
 
 import './Header.css';
 
@@ -11,6 +12,7 @@ function Header() {
                 <input
                     className="header__searchInput"
                     type="text" />
+                <SearchRoundedIcon className="header__searchIcon" />
             </div>
 
             <div className="header__nav">
