@@ -1,5 +1,6 @@
 import React from 'react';
 import SearchRoundedIcon from '@material-ui/icons/SearchRounded';
+import ShoppingCartRoundedIcon from '@material-ui/icons/ShoppingCartRounded';
 
 import './Header.css';
 
@@ -41,6 +42,11 @@ function Header() {
                     <span className="header__optionLineTwo">
                         Membership
                     </span>
+                </div>
+
+                <div className="header__optionBasket">
+                    <ShoppingCartRoundedIcon />
+                    <span className="header__optionLineTwo header__basketCount">0</span>
                 </div>
             </div>
         </div>
