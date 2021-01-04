@@ -1,20 +1,21 @@
+import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+
 import './App.css';
 import Header from './components/Header';
 import Home from './components/Home';
-import { BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import Checkout from './components/Checkout';
 
 function App() {
   return (
     <Router>
       <div className="App">
+        <Header />
         <Switch>
           <Route path="/checkout">
-            <Header />
-            <h1>Checkout Page</h1>
+            <Checkout />
           </Route>
           {/* This is the default page */}
           <Route path="/">
-            <Header />
             <Home />
           </Route>
         </Switch>
