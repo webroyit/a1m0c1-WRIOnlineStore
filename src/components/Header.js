@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import SearchRoundedIcon from '@material-ui/icons/SearchRounded';
 import ShoppingCartRoundedIcon from '@material-ui/icons/ShoppingCartRounded';
 
@@ -7,7 +8,9 @@ import './Header.css';
 function Header() {
     return(
         <div className='header'>
-            <img className="header__logo" src="/images/logo.png" alt="Logo" />
+            <Link to="/">
+                <img className="header__logo" src="/images/logo.png" alt="Logo" />
+            </Link>
 
             <div className="header__search">
                 <input
@@ -44,10 +47,12 @@ function Header() {
                     </span>
                 </div>
 
-                <div className="header__optionBasket">
-                    <ShoppingCartRoundedIcon />
-                    <span className="header__optionLineTwo header__basketCount">0</span>
-                </div>
+                <Link to="/checkout">
+                    <div className="header__optionBasket">
+                        <ShoppingCartRoundedIcon />
+                        <span className="header__optionLineTwo header__basketCount">0</span>
+                    </div>
+                </Link>
             </div>
         </div>
     )
