@@ -4,9 +4,16 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import { StateProvider } from './StateProvider';
+import reducer, { initialState } from './reducer';
+
+// 'initialState' is for the structure of the data layer
+// 'reducer' is for changing data layer
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <StateProvider initialState={initialState} reducer={reducer}>
+      <App />
+    </StateProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
