@@ -10,7 +10,7 @@ function Login() {
                 <img className="login__logo" src="/images/logo.png" alt="Logo" />
             </Link>
 
-            <div className="login_container">
+            <div className="login__container">
                 <h1>Sign In</h1>
 
                 <form>
