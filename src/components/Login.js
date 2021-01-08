@@ -11,6 +11,18 @@ function Login() {
 
     const signIn = (e) => {
         e.preventDefault();
+
+        // Login the user
+        auth
+            .signInWithEmailAndPassword(email, password)
+            .then((auth) => {
+                // Success
+                if (auth) {
+                    // Redirect to home page
+                    history.push('/');
+                }
+            })
+            .catch(error => alert(error.message));
     }
 
     const register = (e) => {
