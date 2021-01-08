@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { auth } from '../firebase';
 
 import './Login.css';
 
@@ -13,6 +14,15 @@ function Login() {
 
     const register = (e) => {
         e.preventDefault();
+
+        // Create an new account with firebase auth
+        auth
+            .createUserWithEmailAndPassword(email, password)
+            .then((auth) => {
+                // It successfully created a new user
+                console.log(auth);
+            })
+            .catch(error => alert(error.message));
     }
 
     return(
