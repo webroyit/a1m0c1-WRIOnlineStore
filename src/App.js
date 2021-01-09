@@ -7,6 +7,7 @@ import Header from './components/Header';
 import Home from './components/Home';
 import Checkout from './components/Checkout';
 import Login from './components/Login';
+import Payment from './components/Payment';
 import { auth } from './firebase';
 
 function App() {
@@ -45,6 +46,10 @@ function App() {
           <Route path="/checkout">
             <Header />
             <Checkout />
+          </Route>
+          <Route path="/payment">
+            <Header />
+            <Payment />
           </Route>
           {/* This is the default page */}
           <Route path="/">
