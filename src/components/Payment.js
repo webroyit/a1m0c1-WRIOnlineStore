@@ -1,14 +1,16 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { Link, useHistory } from 'react-router-dom';
 import { CardElement, useStripe, useElements } from '@stripe/react-stripe-js';
 import CurrencyFormat from 'react-currency-format';
 
 import './Payment.css';
+import axios from '../axios';
 import  { useStateValue } from '../StateProvider';
 import { getBasketTotal } from '../reducer';
 import CheckoutProduct from './CheckoutProduct';
 
 function Payment() {
+    const history = useHistory();
     const [{ basket, user}, dispatch] = useStateValue();
 
     const stripe = useStripe();
@@ -18,6 +20,42 @@ function Payment() {
     const [processing, setProcessing] = useState("");
     const [error, setError] = useState(null);
     const [disabled, setDisabled] = useState(true);
+    const [clientSecret, setClientSecret] = useState(true);
+
+    useEffect(() => {
+        // Generate the special stripe secret which allows us to charge a user
+        const getClientSecret = async () => {
+            const response = await axios({
+                method: 'post',
+                // Stripe expects the total in a currencies submits
+                url: `/payments/create?total=${getBasketTotal(basket) * 100}`
+            })
+            setClientSecret(response.data.clientSecret);
+        }
+
+        getClientSecret();
+    }, [basket])
+
+    const handleSubmit = async event => {
+        event.preventDefault();
+        setProcessing(true);
+
+        const payload = await stripe.confirmCardPayment(clientSecret, {
+            payment_method: {
+                // Get the user card information input
+                card: elements.getElement(CardElement)
+            }
+        }).then(({ paymentIntent }) => {
+            // 'paymentIntent' = payment confirmation
+
+            setSucceeded(true);
+            setError(null);
+            setProcessing(false);
+
+            // 'replace' to prevent user from going to previous page
+            history.replace('/orders');
+        })
+    }
 
     const handleChnage = event => {
         // Listen for changes in the CardElement and display any errors as the user types their card details
@@ -64,7 +102,7 @@ function Payment() {
                         <h3>Payment Method</h3>
                     </div>
                     <div className='payment__details'>
-                        <form>
+                        <form onSubmit={handleSubmit}>
                             <CardElement onChange={handleChnage} />
 
                             <div className="payment__priceContainer">
