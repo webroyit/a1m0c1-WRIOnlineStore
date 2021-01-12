@@ -16,6 +16,11 @@ const reducer = (state, action) => {
                 ...state,
                 basket: [...state.basket, action.item]
             };
+        case 'EMPTY_BASKET':
+            return {
+                ...state,
+                basket: []
+            };
         case 'REMOVE_FROM_BASKET':
             // Find only the first item that match
             const index = state.basket.findIndex(
