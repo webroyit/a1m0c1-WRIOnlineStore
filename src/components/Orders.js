@@ -3,9 +3,10 @@ import React, { useEffect, useState } from 'react';
 import './Orders.css';
 import  { useStateValue } from '../StateProvider';
 import { db } from '../firebase';
+import Order from './Order';
 
 function Orders() {
-    const [{ user}, dispatch] = useStateValue();
+    const [{ user }, dispatch] = useStateValue();
 
     const [orders, setOrders] = useState([]);
 
@@ -28,11 +29,15 @@ function Orders() {
         
     }, [user])
 
-    console.log(orders)
-
+    console.log("fdfssdds", orders)
     return(
         <div className='orders'>
             <h1>Your Orders</h1>
+            <div className="orders__order">
+                {orders?.map(order => (
+                    <Order order={order} />
+                ))}
+            </div>
         </div>
     )
 }
