@@ -10,6 +10,7 @@ import Home from './components/Home';
 import Checkout from './components/Checkout';
 import Login from './components/Login';
 import Payment from './components/Payment';
+import Orders from './components/Orders';
 import { auth } from './firebase';
 
 const promise = loadStripe('pk_test_51I89PsJ3plYORpRYsT1s6qmY5NW8ANbzDOAcOj7xMEmdwO5NFclViTExzZQxl7exrBWMEE7lfXvyik9FbFhHUD2V003z8z96L5');
@@ -56,6 +57,10 @@ function App() {
             <Elements stripe={promise}>
               <Payment />
             </Elements>
+          </Route>
+          <Route path="/orders">
+            <Header />
+            <Orders />
           </Route>
           {/* This is the default page */}
           <Route path="/">
