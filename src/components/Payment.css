@@ -27,3 +27,21 @@
 .payment__address, .payment__items, .payment__details {
     flex: .8;
 }
+
+.payment__details > form {
+    max-width: 35rem;
+}
+
+.payment__details > h3 {
+    padding-bottom: 2rem;
+}
+
+.payment__details > form > div > button {
+    background-color: #ff1f5a;
+    border-radius: 2px;
+    border: 1px solid;
+    margin-top: 1rem;
+    width: 100%;
+    height: 2rem;
+    font-weight: bolder;
+}
