@@ -20,9 +20,5 @@
 @media only screen and (max-width: 800px) {
     .order {
         padding: 2rem;
-        margin: 2rem 0;
-        border: 1px solid lightgray;
-        background-color: white;
-        position: relative;
     }
 }
