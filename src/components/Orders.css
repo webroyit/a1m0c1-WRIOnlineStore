@@ -5,3 +5,13 @@
 .orders > h1{
     margin: .5rem 0;
 }
+
+@media only screen and (max-width: 800px) {
+    .orders {
+        padding: 1rem 2rem;
+    }
+    
+    .orders > h1{
+        margin: 0;
+    }
+}

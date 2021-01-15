@@ -45,3 +45,14 @@
     height: 2rem;
     font-weight: bolder;
 }
+
+@media only screen and (max-width: 800px) {
+    .payment__container > h1 {
+        padding: .5rem;
+        font-size: 1.6rem;
+    }
+
+    .payment__section {
+        flex-direction: column;
+    }
+}

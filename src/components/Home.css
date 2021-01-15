@@ -16,6 +16,18 @@
 .home__image {
     width: 100%;
     z-index: -1;
-    margin-bottom: -150px;
+    margin-bottom: -350px;
     mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
 }
+
+@media only screen and (max-width: 800px) {
+    .home__image {
+        margin-bottom: -70px;
+    }
+
+    .home__row {
+        flex-direction: column;
+        margin-left: 0;
+        margin-right: 0;
+    }
+  }
